@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Problema 2 — Descuento de Supermercado</title>
+
+  <!-- ===== REFERENCIA AL ARCHIVO CSS (hoja de estilos general) ===== -->
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body class="tema-2">
+
+  <div class="card">
+    <a class="volver" href="../index.html">← Volver al menú</a>
+    <h1>Descuento de Supermercado</h1>
+    <p class="sub">Problema 2 — Si el número al azar es &lt; 74 el descuento es 15%; si es ≥ 74, es 20%.</p>
+
+    <label for="total">Ingrese el total de la compra</label>
+    <input id="total" type="number" step="any" placeholder="Ej: 200000">
+
+    <button onclick="descuentoSupermercado()">Generar número y calcular</button>
+    <p class="err" id="err">Por favor ingrese un total válido.</p>
+
+    <div class="result" id="result">
+      <div class="azar">Número al azar generado: <b id="azar">—</b> (0 a 100)</div>
+      <div class="row"><span>% aplicado</span><span id="porc">—</span></div>
+      <div class="row"><span>Dinero descontado</span><span id="descuento">—</span></div>
+      <div class="row total"><span>Total a pagar</span><span id="pagar">—</span></div>
+    </div>
+  </div>
+
+  <!-- ===== REFERENCIA AL ARCHIVO JAVASCRIPT (lógica general) ===== -->
+  <script src="../js/algoritmos.js"></script>
+</body>
+</html>

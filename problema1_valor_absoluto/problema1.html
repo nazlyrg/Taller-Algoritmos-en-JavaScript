@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Problema 1 — Valor Absoluto</title>
+
+  <!-- ===== REFERENCIA AL ARCHIVO CSS (hoja de estilos general) ===== -->
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body class="tema-1">
+
+  <div class="card">
+    <a class="volver" href="../index.html">← Volver al menú</a>
+    <h1>Valor Absoluto</h1>
+    <p class="sub">Problema 1 — Leer un número y escribir su valor absoluto.</p>
+
+    <label for="numero">Ingrese un número (puede ser negativo)</label>
+    <input id="numero" type="number" step="any" placeholder="Ej: -8">
+
+    <button onclick="valorAbsoluto()">Calcular valor absoluto</button>
+    <p class="err" id="err">Por favor ingrese un número válido.</p>
+
+    <div class="result" id="result">
+      <div class="big" id="salida">—</div>
+      <div class="step" id="paso"></div>
+    </div>
+  </div>
+
+  <!-- ===== REFERENCIA AL ARCHIVO JAVASCRIPT (lógica general) ===== -->
+  <script src="../js/algoritmos.js"></script>
+</body>
+</html>

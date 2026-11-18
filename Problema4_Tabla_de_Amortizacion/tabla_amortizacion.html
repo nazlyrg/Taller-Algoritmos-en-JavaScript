@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabla de Amortización — Taller de Algoritmos</title>
+
+  <!-- ===== 1. HOJA DE ESTILOS DE DATATABLES (librería externa, desde su CDN oficial) ===== -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+
+  <!-- ===== 2. HOJA DE ESTILOS GENERAL DEL TALLER (va DESPUÉS para poder ajustar DataTables) ===== -->
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body class="tema-5">
+
+  <div class="card ancho">
+    <a class="volver" href="../index.html">← Volver al menú</a>
+    <h1>Tabla de Amortización</h1>
+    <p class="sub">Préstamo con cuota fija mensual (sistema francés). Ingrese los datos y presione <b>Calcular</b>.</p>
+
+    <div class="note">
+      <b>Reglas de validación:</b>
+      Deuda: valor positivo <b>mayor a $2.000.000</b> ·
+      Interés: <b>entre 1% y 5% mensual</b> (5% = tasa de usura máxima por mes) ·
+      Plazo: número entero de meses <b>entre 1 y 360</b>.
+    </div>
+
+    <!-- ===== FORMULARIO: aquí el usuario escribe los 3 datos ===== -->
+    <!-- novalidate = desactivamos la validación automática del navegador, porque la hacemos nosotros con JavaScript -->
+    <form id="formAmortizacion" novalidate>
+      <div class="grid">
+        <div>
+          <label for="deuda">Valor de la deuda ($)</label>
+          <input id="deuda" type="number" step="any" min="0" placeholder="Ej: 10000000">
+          <small class="campo-error" id="error-deuda"></small>
+        </div>
+        <div>
+          <label for="interes">Interés mensual (%)</label>
+          <input id="interes" type="number" step="any" min="1" max="5" placeholder="Ej: 2.5">
+          <small class="campo-error" id="error-interes"></small>
+        </div>
+        <div>
+          <label for="plazo">Plazo (meses)</label>
+          <input id="plazo" type="number" step="1" min="1" max="360" placeholder="Ej: 12">
+          <small class="campo-error" id="error-plazo"></small>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" id="btnCalcular">Calcular</button>
+        <button type="button" class="sec" id="btnLimpiar">Limpiar</button>
+      </div>
+    </form>
+
+    <p class="err" id="err"></p>
+    <p class="estado-ajax" id="estadoAjax">Cargando idioma español de la tabla por AJAX…</p>
+
+    <!-- ===== RESULTADOS: se muestran solo cuando los datos son válidos ===== -->
+    <section id="seccionResultados" class="oculto">
+      <div class="cards">
+        <div class="stat"><div class="n" id="resCuota">$0</div><div class="l">Cuota mensual fija</div></div>
+        <div class="stat"><div class="n" id="resIntereses">$0</div><div class="l">Total intereses</div></div>
+        <div class="stat"><div class="n" id="resTotal">$0</div><div class="l">Total pagado</div></div>
+      </div>
+
+      <div class="actions">
+        <button type="button" id="btnAbrirModal">🖨 Ver e imprimir tabla</button>
+      </div>
+
+      <!-- Tabla que DataTables convertirá en una tabla con búsqueda, orden y paginación -->
+      <table id="tablaAmortizacion" class="display show" style="width:100%">
+        <thead>
+          <tr>
+            <th>N° cuota</th>
+            <th>Cuota</th>
+            <th>Interés</th>
+            <th>Abono a capital</th>
+            <th>Saldo</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </div>
+
+  <!-- ===== VENTANA MODAL DE IMPRESIÓN (oculta hasta que se abre) ===== -->
+  <div id="modalImprimir" class="modal-fondo" aria-hidden="true">
+    <div class="modal-caja" role="dialog" aria-modal="true" aria-labelledby="tituloModal">
+      <div class="modal-cabecera">
+        <h2 id="tituloModal">Vista previa de impresión</h2>
+        <button type="button" class="modal-cerrar" id="btnCerrarX" aria-label="Cerrar">×</button>
+      </div>
+
+      <!-- Solo esta zona sale en la hoja impresa -->
+      <div class="modal-cuerpo" id="zonaImpresion"></div>
+
+      <div class="modal-pie">
+        <button type="button" id="btnImprimir">🖨 Imprimir</button>
+        <button type="button" class="sec" id="btnCerrarModal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SCRIPTS: el ORDEN importa ===== -->
+  <!-- 1) jQuery primero, porque DataTables lo necesita -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <!-- 2) DataTables después de jQuery -->
+  <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+  <!-- 3) El JavaScript general del taller al final, cuando ya existen jQuery y DataTables -->
+  <script src="../js/algoritmos.js"></script>
+</body>
+</html>

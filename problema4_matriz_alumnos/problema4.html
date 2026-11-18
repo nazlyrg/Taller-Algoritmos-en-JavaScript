@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Problema 4 — Matriz de Alumnos M(50,5)</title>
+
+  <!-- ===== REFERENCIA AL ARCHIVO CSS (hoja de estilos general) ===== -->
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body class="tema-4">
+
+  <div class="card ancho">
+    <a class="volver" href="../index.html">← Volver al menú</a>
+    <h1>Matriz de Alumnos M(50,5)</h1>
+    <p class="sub">Problema 4 — Nota final = promedio de las tres notas (calculada, no ingresada).</p>
+    <div class="note">
+      <b>Reglas:</b> las notas deben estar entre 1.0 y 5.0 (se controla el rango).
+      Aprobado: final entre 3.0 y 5.0 · Recuperación: final entre 2.0 y 2.9 · Nota máxima: final = 5.0.
+      El taller define M(50,5); aquí puede agregar los alumnos que necesite.
+    </div>
+
+    <div class="grid">
+      <div><label>Código</label><input id="codigo" placeholder="101"></div>
+      <div><label>Nota 1 (1.0–5.0)</label><input id="n1" type="number" step="any" min="1" max="5" placeholder="5.0"></div>
+      <div><label>Nota 2 (1.0–5.0)</label><input id="n2" type="number" step="any" min="1" max="5" placeholder="5.0"></div>
+      <div><label>Nota 3 (1.0–5.0)</label><input id="n3" type="number" step="any" min="1" max="5" placeholder="5.0"></div>
+    </div>
+
+    <div class="actions">
+      <button onclick="agregarAlumno()">Agregar alumno</button>
+      <button class="sec" onclick="limpiarAlumnos()">Limpiar todo</button>
+    </div>
+    <p class="err" id="err"></p>
+
+    <div class="cards" id="cards" style="display:none">
+      <div class="stat apro"><div class="n" id="cApro">0</div><div class="l">Aprobados (3.0 – 5.0)</div></div>
+      <div class="stat recu"><div class="n" id="cRecu">0</div><div class="l">Recuperación (2.0 – 2.9)</div></div>
+      <div class="stat max"><div class="n" id="cMax">0</div><div class="l">Nota máxima (5.0)</div></div>
+    </div>
+
+    <table id="tabla">
+      <thead>
+        <tr><th>Código</th><th>N1</th><th>N2</th><th>N3</th><th>Final</th><th>Clasificación</th></tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+
+  <!-- ===== REFERENCIA AL ARCHIVO JAVASCRIPT (lógica general) ===== -->
+  <script src="../js/algoritmos.js"></script>
+</body>
+</html>
